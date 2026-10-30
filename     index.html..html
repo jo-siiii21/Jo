@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10091b">
+<title>Study Hub — Student Dashboard</title>
+<style>
+:root{--bg:#09070f;--panel:#171122;--purple:#a855f7;--pink:#f0abfc;--text:#fbf7ff;--muted:#bcb0cc;--line:#49305e}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#452064 0,transparent 48%),linear-gradient(145deg,#09070f,#100a19 55%,#08070d);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(transparent 97%,#c084fc0b 100%);background-size:100% 5px;opacity:.28}
+.wrap{max-width:1100px;margin:auto;padding:22px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:7px 0 18px;border-bottom:1px solid #ffffff20}
+.brand{font-weight:900;letter-spacing:1px;font-size:1.25rem}.brand span{color:var(--pink);text-shadow:0 0 18px #d946ef88}
+.badge{border:1px solid #b56bdf77;border-radius:999px;padding:6px 11px;color:#f3d9ff;font-size:.8rem;background:#a855f715}
+.hero{padding:35px 0 18px}.eyebrow{color:var(--pink);font-weight:800;text-transform:uppercase;letter-spacing:2.5px;font-size:.75rem}
+h1{font-size:clamp(2.25rem,8vw,4rem);line-height:1.02;letter-spacing:-1.5px;margin:10px 0 13px}.glow{color:#e9c4ff;text-shadow:0 0 25px #c026d366}.hero p{color:var(--muted);max-width:650px;margin:0}
+.searchbar{display:flex;gap:9px;margin:20px 0 13px;flex-wrap:wrap}.searchbar input,.searchbar select,.custom-form input{min-width:0;background:#171122;border:1px solid var(--line);border-radius:12px;padding:12px;color:white;font:inherit}.searchbar input{flex:1}.searchbar select{max-width:125px}.btn{border:1px solid #d8b4fe55;border-radius:12px;background:linear-gradient(135deg,#9333ea,#6b21a8);color:white;font-weight:800;padding:11px 15px;font:inherit;cursor:pointer;box-shadow:0 0 20px #a855f722}.btn:hover{filter:brightness(1.15)}
+.quickline{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 26px}.pill{border:1px solid #ffffff24;border-radius:999px;padding:7px 12px;color:#eadcf7;text-decoration:none;background:#ffffff08;font-size:.9rem}.pill:hover{border-color:var(--pink)}
+.section{margin:29px 0}.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.section-title h2{font-size:1.12rem;margin:0}.section-title small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.tile{display:block;text-decoration:none;color:var(--text);background:linear-gradient(145deg,#21162fdd,#100d18ee);border:1px solid #58376e88;border-radius:16px;padding:16px;min-height:115px;transition:transform .18s,border-color .18s,box-shadow .18s;position:relative;overflow:hidden}
+.tile:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent,#e879f90a,transparent);transform:translateX(-100%);transition:transform .45s}
+.tile:hover,.tile:focus{transform:translateY(-3px);border-color:#e879f9;box-shadow:0 8px 28px #a855f72a;outline:none}.tile:hover:before{transform:translateX(100%)}
+.icon{font-size:1.65rem;display:block;margin-bottom:7px}.tile strong{display:block}.tile small{color:var(--muted);display:block;margin-top:3px}
+.panel{background:#171122c9;border:1px solid #58376e88;border-radius:18px;padding:17px;margin-top:14px}
+.game-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.score{font-weight:850;color:var(--pink)}.game-btn{width:100%;min-height:115px;margin-top:12px;border:1px solid #e879f988;border-radius:15px;background:radial-gradient(circle at 50% 40%,#7e22ce,#251037 70%);color:white;font-size:1.15rem;font-weight:850;cursor:pointer;box-shadow:inset 0 0 25px #e879f922,0 0 24px #a855f722}.game-btn:active{transform:scale(.99)}
+.custom-form{display:flex;gap:8px;flex-wrap:wrap}.custom-form input{flex:1}.custom-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.custom-link{display:inline-flex;align-items:center;gap:8px;border:1px solid #71458a;border-radius:10px;padding:8px 10px;color:#f6e8ff;text-decoration:none;background:#a855f714}.custom-link button{border:0;color:#e9c4ff;background:transparent;cursor:pointer;font-size:1rem}
+.note{margin-top:25px;border:1px solid #ffffff20;border-radius:14px;padding:13px;color:var(--muted);font-size:.88rem;background:#ffffff05}footer{text-align:center;color:#91839f;font-size:.8rem;padding:25px 0 8px}
+@media(max-width:520px){.wrap{padding:16px}.searchbar select{max-width:100%;flex:1}.searchbar .btn{width:100%}.section-title small{font-size:.75rem}}
+</style>
+</head>
+<body><main class="wrap">
+<header><div class="brand">✦ <span>STUDY</span> HUB</div><div class="badge">✦ Student Dashboard</div></header>
+<section class="hero"><div class="eyebrow">Your online launchpad</div><h1>Welcome to your<br><span class="glow">Study Hub.</span></h1><p>One spot for games, videos, music, creative tools, and school resources.</p></section>
+<form class="searchbar" id="searchForm"><input id="searchInput" type="search" placeholder="Search the web…" aria-label="Search the web"><select id="engine" aria-label="Search engine"><option value="google">Google</option><option value="bing">Bing</option><option value="duck">DuckDuckGo</option></select><button class="btn" type="submit">Search ↗</button></form>
+<nav class="quickline" aria-label="Jump to section"><a class="pill" href="#games">🎮 Games</a><a class="pill" href="#media">🎥 Video & Music</a><a class="pill" href="#tools">🧰 Apps</a><a class="pill" href="#custom">➕ My Links</a></nav>
+<section class="section" id="games"><div class="section-title"><h2>🎮 Games & Fun</h2><small>Tap a card to open</small></div><div class="grid">
+<a class="tile" href="https://www.coolmathgames.com/" target="_blank" rel="noopener"><span class="icon">🧩</span><strong>Coolmath Games</strong><small>Puzzles & strategy</small></a>
+<a class="tile" href="https://poki.com/" target="_blank" rel="noopener"><span class="icon">🕹️</span><strong>Poki</strong><small>Browser games</small></a>
+<a class="tile" href="https://www.chess.com/" target="_blank" rel="noopener"><span class="icon">♟️</span><strong>Chess.com</strong><small>Play chess</small></a>
+<a class="tile" href="https://www.geoguessr.com/" target="_blank" rel="noopener"><span class="icon">🌎</span><strong>GeoGuessr</strong><small>Explore the world</small></a>
+<a class="tile" href="https://itch.io/games/html5" target="_blank" rel="noopener"><span class="icon">👾</span><strong>HTML5 Games</strong><small>Indie browser games</small></a>
+</div>
+<div class="panel"><div class="game-head"><strong>✨ Mini Game: Purple Clicker</strong><span class="score">Score: <span id="score">0</span></span></div><p style="color:var(--muted);margin:6px 0 0">Tap the glowing button as many times as you can. Your best score is saved on this device.</p><button class="game-btn" id="clicker" type="button">TAP TO SCORE ✦</button><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px"><small style="color:var(--muted)">Personal best: <span id="best">0</span></small><button class="pill" id="reset" type="button">Reset score</button></div></div></section>
+<section class="section" id="media"><div class="section-title"><h2>🎥 Video & Music</h2><small>Watch and listen</small></div><div class="grid">
+<a class="tile" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="icon">▶️</span><strong>YouTube</strong><small>Videos & learning</small></a>
+<a class="tile" href="https://music.youtube.com/" target="_blank" rel="noopener"><span class="icon">🎵</span><strong>YouTube Music</strong><small>Music and mixes</small></a>
+<a class="tile" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="icon">🎧</span><strong>Spotify Web</strong><small>Music & podcasts</small></a>
+<a class="tile" href="https://www.ted.com/talks" target="_blank" rel="noopener"><span class="icon">💡</span><strong>TED Talks</strong><small>Ideas and learning</small></a>
+</div></section>
+<section class="section" id="tools"><div class="section-title"><h2>🧰 Study Tools & Apps</h2><small>Useful resources</small></div><div class="grid">
+<a class="tile" href="https://www.desmos.com/calculator" target="_blank" rel="noopener"><span class="icon">📈</span><strong>Desmos</strong><small>Graphing calculator</small></a>
+<a class="tile" href="https://www.khanacademy.org/" target="_blank" rel="noopener"><span class="icon">📚</span><strong>Khan Academy</strong><small>Learn new skills</small></a>
+<a class="tile" href="https://www.google.com/" target="_blank" rel="noopener"><span class="icon">🔎</span><strong>Google</strong><small>Search the web</small></a>
+<a class="tile" href="https://translate.google.com/" target="_blank" rel="noopener"><span class="icon">🌐</span><strong>Translate</strong><small>Language helper</small></a>
+<a class="tile" href="https://docs.google.com/" target="_blank" rel="noopener"><span class="icon">📝</span><strong>Google Docs</strong><small>Write and edit</small></a>
+<a class="tile" href="https://www.canva.com/" target="_blank" rel="noopener"><span class="icon">🎨</span><strong>Canva</strong><small>Design projects</small></a>
+<a class="tile" href="https://www.desmos.com/scientific" target="_blank" rel="noopener"><span class="icon">➗</span><strong>Scientific Calculator</strong><small>Quick calculations</small></a>
+<a class="tile" href="https://www.typing.com/" target="_blank" rel="noopener"><span class="icon">⌨️</span><strong>Typing.com</strong><small>Typing practice</small></a>
+</div></section>
+<section class="section" id="custom"><div class="section-title"><h2>➕ My Quick Links</h2><small>Saved on this device</small></div><div class="panel"><p style="color:var(--muted);margin-top:0">Add a name and a website address to make your own shortcuts. Use a full address starting with https://.</p><form id="customForm" class="custom-form"><input id="linkName" placeholder="Link name (e.g. My class page)" maxlength="35" required><input id="linkUrl" type="url" placeholder="https://example.com" required><button class="btn" type="submit">Add link +</button></form><div id="customList" class="custom-list"></div></div></section>
+<div class="note">Heads up: this is a shortcut dashboard, not a proxy. A school or network filter may still block individual sites. Custom links and your clicker best score are stored only in this browser on this device.</div>
+<footer>STUDY HUB · Learn something. Try something. Have fun. ✦</footer>
+</main>
+<script>
+document.getElementById('searchForm').addEventListener('submit',function(e){e.preventDefault();const q=document.getElementById('searchInput').value.trim();if(!q)return;const engines={google:'https://www.google.com/search?q=',bing:'https://www.bing.com/search?q=',duck:'https://duckduckgo.com/?q='};window.open(engines[document.getElementById('engine').value]+encodeURIComponent(q),'_blank','noopener');});
+let score=0;let best=0;try{best=Number(localStorage.getItem('studyhub-best')||0)}catch(e){}document.getElementById('best').textContent=best;
+document.getElementById('clicker').addEventListener('click',()=>{score++;document.getElementById('score').textContent=score;if(score>best){best=score;document.getElementById('best').textContent=best;try{localStorage.setItem('studyhub-best',best)}catch(e){}}});
+document.getElementById('reset').addEventListener('click',()=>{score=0;document.getElementById('score').textContent=score;});
+function safeUrl(raw){try{const u=new URL(raw);return ['http:','https:'].includes(u.protocol)?u.href:null}catch(e){return null}}
+function renderLinks(){const list=document.getElementById('customList');list.replaceChildren();let links=[];try{links=JSON.parse(localStorage.getItem('studyhub-links')||'[]')}catch(e){}links.forEach((item,i)=>{const a=document.createElement('a');a.className='custom-link';a.href=item.url;a.target='_blank';a.rel='noopener';a.textContent=item.name;const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Remove '+item.name);b.textContent='×';b.addEventListener('click',()=>{links.splice(i,1);try{localStorage.setItem('studyhub-links',JSON.stringify(links))}catch(e){}renderLinks()});a.appendChild(b);list.appendChild(a)});if(!links.length){const small=document.createElement('small');small.style.color='var(--muted)';small.textContent='No custom links yet.';list.appendChild(small)}}
+document.getElementById('customForm').addEventListener('submit',function(e){e.preventDefault();const name=document.getElementById('linkName').value.trim();const url=safeUrl(document.getElementById('linkUrl').value.trim());if(!name||!url){alert('Please enter a name and a valid http:// or https:// address.');return}let links=[];try{links=JSON.parse(localStorage.getItem('studyhub-links')||'[]')}catch(e){}links.push({name,url});try{localStorage.setItem('studyhub-links',JSON.stringify(links))}catch(e){}this.reset();renderLinks()});renderLinks();
+</script></body></html>
